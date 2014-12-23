@@ -1,0 +1,170 @@
+{
+  "products": [
+    {
+      "name": "1/2 Cup of Choc", 
+      "price": 12
+    }, 
+    {
+      "name": "Cup of Nuts!", 
+      "price": 17
+    }, 
+    {
+      "name": "Fruit", 
+      "price": 9
+    }
+  ], 
+  "accounts": [
+    {
+      "name": "Audun", 
+      "balance": 24, 
+      "cards": [
+        "4310A62E", 
+        "FA2F3C04", 
+        "43C8EAFA"
+      ]
+    }, 
+    {
+      "name": "Tore", 
+      "balance": 63, 
+      "cards": [
+        "B2687304"
+      ]
+    }, 
+    {
+      "name": "Gabor", 
+      "balance": 39, 
+      "cards": [
+        "5DB64CA0"
+      ]
+    }, 
+    {
+      "name": "Sindre", 
+      "balance": 57, 
+      "cards": [
+        "CE8E10CE"
+      ]
+    }, 
+    {
+      "name": "Deyan", 
+      "balance": -47, 
+      "cards": [
+        "5D73D510"
+      ]
+    }, 
+    {
+      "name": "Johannes", 
+      "balance": 244, 
+      "cards": [
+        "6A422104", 
+        "4AAE963A"
+      ]
+    }, 
+    {
+      "name": "Lukasz", 
+      "balance": 0, 
+      "cards": [
+        "8968F644"
+      ]
+    }, 
+    {
+      "name": "Siri", 
+      "balance": 303, 
+      "cards": [
+        "5DC00CA0"
+      ]
+    }, 
+    {
+      "name": "Anand", 
+      "balance": 11, 
+      "cards": [
+        "7B7AE260"
+      ]
+    }, 
+    {
+      "name": "Sohrab", 
+      "balance": 0, 
+      "cards": [
+        "F2531704"
+      ]
+    }, 
+    {
+      "name": "Dragon", 
+      "balance": 37, 
+      "cards": [
+        "43250E9E"
+      ]
+    }, 
+    {
+      "name": "Jennifer", 
+      "balance": -10, 
+      "cards": [
+        "7B8CE9E0"
+      ]
+    }, 
+    {
+      "name": "Trygve", 
+      "balance": 63, 
+      "cards": [
+        "5D73BC50", 
+        "43C89DBA"
+      ]
+    }, 
+    {
+      "name": "Robert", 
+      "balance": 13, 
+      "cards": [
+        "DA143104"
+      ]
+    }, 
+    {
+      "name": "Kai-Ruben", 
+      "balance": 0, 
+      "cards": [
+        "A0437EFE"
+      ]
+    }, 
+    {
+      "name": "Mattias", 
+      "balance": 0, 
+      "cards": [
+        "3A81C804", 
+        "40A8C208"
+      ]
+    }, 
+    {
+      "name": "olivier", 
+      "balance": 0, 
+      "cards": [
+        "7B6BCCC0"
+      ]
+    }, 
+    {
+      "name": "Endre", 
+      "balance": 20, 
+      "cards": [
+        "4AAF146A"
+      ]
+    }, 
+    {
+      "name": "Guest", 
+      "balance": 0, 
+      "cards": [
+        "A0412BBE"
+      ]
+    }, 
+    {
+      "name": "TRUNG", 
+      "balance": 61, 
+      "cards": [
+        "4AAFCAAA"
+      ]
+    }, 
+    {
+      "name": "Christian", 
+      "balance": -17, 
+      "cards": [
+        "7B6B9AA0"
+      ]
+    }
+  ]
+}

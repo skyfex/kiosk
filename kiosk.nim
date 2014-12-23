@@ -1,4 +1,5 @@
 import
+    os,
     buttons,
     cardreader,
     json,
@@ -19,6 +20,21 @@ type
 
 var accounts: seq[Account]
 var products: seq[Product]
+
+var stdinChan: TChannel[string]
+var stdinThread: TThread[void]
+
+proc stdinReader() {.thread.} =
+    while true:
+        var lin = stdin.readLine
+        stdinChan.send lin
+
+proc stdinReaderInit() =
+    stdinChan.open
+    createThread[void](stdinThread, stdinReader)
+
+var timerChan: TChannel[tuple[repeat: bool, period: int]]
+var timerThread: TThread[void]
 
 proc renderMenu(message: seq[string], choices: seq[string], info: seq[string]) =
     const
@@ -140,13 +156,13 @@ proc writeDB() =
     var prods = newJArray()
     for p in products:
         prods.elems.add p.toJSON()
-    db["products"] = prods
 
     var accnts = newJArray()
     for a in accounts:
         accnts.elems.add(a.toJSON())
-    db["accounts"] = accnts
 
+    db["products"] = prods
+    db["accounts"] = accnts
 
     var f: TFile
     if f.open("db.json", fmWrite):
@@ -157,7 +173,9 @@ proc processNewCard(cardID: NFCID) =
     var accnt: Account
     echo "No account attached to card"
     echo "Please type name for card:"
-    var name = stdin.readLine
+    while stdinChan.peek > 0:
+        discard stdinChan.recv
+    var name = stdinChan.recv
     for a in accounts:
         if a.name == name:
             accnt = a
@@ -168,7 +186,8 @@ proc processNewCard(cardID: NFCID) =
         echo "Attach do existing account? " & accnt.name
         echo "Balance: " & $accnt.balance
     stdout.write("[Y/N]: ")
-    var answ = toLower(stdin.readLine)
+    stdout.flushFile
+    var answ = toLower(stdinChan.recv)
     if answ!="y": return
     if isNil(accnt):
         accnt = newAccount(name)
@@ -177,11 +196,14 @@ proc processNewCard(cardID: NFCID) =
 
 
 proc addToBalance(accnt: Account) =
+    while stdinChan.peek > 0:
+        discard stdinChan.recv
     echo "Amount:"
-    stdout.write("$ ")
+    stdout.write("Kr ")
+    stdout.flushFile
     var answ: int
     try:
-        answ = parseInt(stdin.readLine)
+        answ = parseInt(stdinChan.recv)
     except EInvalidValue:
         echo "No amount"
         return
@@ -238,6 +260,7 @@ readDB()
 
 initButtons()
 startCardReader()
+stdinReaderInit()
 
 while true:
     var crMsg = crTX.recv
